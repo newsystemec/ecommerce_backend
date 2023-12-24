@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->index("customer_id");
-            $table->index("sale_id");
+            $table->unsignedBigInteger("customer_id");
             $table->float("total_amount");
             $table->float("discount")->nullable();
             $table->boolean("is_void")->default(false);
@@ -22,15 +21,10 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign("customer_id")
-                ->references("_id")
+                ->references("id")
                 ->on("customers")
-                ->onDelete("cascade");
-
-            $table->foreign("sale_id")
-                ->references("_id")
-                ->on("sales")
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
+                ->onDelete("cascade")
+                ->onUpdate("cascade");
         });
     }
 

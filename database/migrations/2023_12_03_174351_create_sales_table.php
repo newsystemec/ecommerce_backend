@@ -13,16 +13,22 @@ return new class extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger("order_id");
+            $table->unsignedBigInteger("customer_id");
+            $table->float("total_amount");
+            $table->float("discount")->default(0);
+            $table->float("amount_paid");
+            $table->float("amount_due")->default(0);
             $table->timestamps();
 
             $table->foreign("customer_id")
-                ->references("_id")
+                ->references("id")
                 ->on("customers")
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
 
             $table->foreign("order_id")
-                ->references("_id")
+                ->references("id")
                 ->on("customers")
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();

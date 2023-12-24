@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('branches', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger("business_id");
+            $table->string("label");
             $table->timestamps();
         });
     }

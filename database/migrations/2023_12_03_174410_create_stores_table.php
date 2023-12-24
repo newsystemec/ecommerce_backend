@@ -13,14 +13,8 @@ return new class extends Migration
     {
         Schema::create('stores', function (Blueprint $table) {
             $table->id();
-            $table->index("business_id");
+            $table->string('label');
             $table->timestamps();
-
-            $table->foreign("business_id")
-                ->references("_id")
-                ->on("businesses")
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
         });
     }
 

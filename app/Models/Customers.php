@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use MongoDB\Laravel\Eloquent\Model;
-use MongoDB\Laravel\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Customers extends Model
 {
@@ -21,11 +21,11 @@ class Customers extends Model
     /* Define Relationships*/
     public function orders()
     {
-        return $this->hasMany(Order::class, "customer_id", '_id');
+        return $this->hasMany(Order::class, "customer_id", 'id');
     }
 
     public function sales()
     {
-        return $this->hasMany(Sale::class, "customer_id", "_id");
+        return $this->hasMany(Sale::class, "customer_id", "id");
     }
 }

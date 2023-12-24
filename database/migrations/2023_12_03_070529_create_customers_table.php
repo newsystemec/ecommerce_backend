@@ -21,14 +21,7 @@ return new class extends Migration
             $table->timestamp('verified_at')->nullable();
             $table->string("password");
             $table->rememberToken();
-            $table->index("order_ids");
             $table->timestamps();
-
-            $table->foreign("order_ids")
-                ->references("_id")
-                ->on("orders")
-                ->cascadeOnDelete()
-                ->cascadeOnUpdate();
         });
     }
 

@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use MongoDB\Laravel\Eloquent\Model;
-use MongoDB\Laravel\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Order extends Model
 {
@@ -14,11 +14,13 @@ class Order extends Model
     protected $guarded = [];
 
     /* Defined Relationships*/
-    public function customer(){
-        return $this->belongsTo(Customers::class, "customer_id", "_id");
+    public function customer()
+    {
+        return $this->belongsTo(Customers::class, "customer_id", "id");
     }
 
-    public function sale() {
-        return $this->belongsTo(Sale::class, "sale_id", "_id");
+    public function sale()
+    {
+        return $this->belongsTo(Sale::class, "sale_id", "id");
     }
 }

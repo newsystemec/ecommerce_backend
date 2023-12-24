@@ -19,13 +19,8 @@ return new class extends Migration
             $table->float("price");
             $table->string("uom");
             $table->string("image");
+            $table->unsignedBigInteger("brand_id");
             $table->timestamps();
-
-            $table->foreign("business_id")
-                ->references("_id")
-                ->on("businesses")
-                ->cascadeOnDelete()
-                ->cascadeOnUpdate();
         });
     }
 
